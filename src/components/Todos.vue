@@ -1,7 +1,7 @@
 <template>
   <div class="todo-list">
     <TodoForm />
-    <ul>
+    <ul v-if="isAuthenticated">
       <li v-for="todo in todos" :key="todo.id" :class="todo.completed ? 'completed' : ''">
         {{ todo.title }}
       </li>
@@ -19,6 +19,9 @@ export default {
   computed: {
     todos() {
       return this.$store.state.todos
+    },
+    isAuthenticated() {
+      return this.$store.state.auth.isAuthenticated
     },
   },
 }

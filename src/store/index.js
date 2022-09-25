@@ -19,6 +19,9 @@ const storeData = {
       { id: 2, title: 'Viec 2', completed: false },
       { id: 3, title: 'Viec 3', completed: false },
     ],
+    auth: {
+      isAuthenticated: false,
+    },
   },
 }
 

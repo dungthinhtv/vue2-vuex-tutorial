@@ -4,7 +4,11 @@
     <ul>
       <li>Home</li>
       <li>About</li>
-      <li>Total todos: {{ todos.length }}</li>
+      <li v-if="isAuthenticated">
+        Total todos: {{ todos.length }}
+        <button @click="TOGGLE_AUTH">Logout</button>
+      </li>
+      <button v-else @click="TOGGLE_AUTH">Login</button>
     </ul>
   </div>
 </template>
@@ -15,6 +19,9 @@ export default {
   computed: {
     todos() {
       return this.$store.state.todos
+    },
+    isAuthenticated() {
+      return this.$store.state.auth.isAuthenticated
     },
   },
 }
