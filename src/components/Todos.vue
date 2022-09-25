@@ -4,9 +4,6 @@
     <ul>
       <li v-for="todo in todos" :key="todo.id" :class="todo.completed ? 'completed' : ''">
         {{ todo.title }}
-
-        <input type="checkbox" :checked="todo.completed" @change="MARK_COMPLETE(todo.id)" />
-        <button @click="deleteTodo(todo.id)">Delete</button>
       </li>
     </ul>
   </div>
@@ -19,6 +16,11 @@ import TodoForm from './TodoForm'
 export default {
   name: 'Todos',
   components: { TodoForm },
+  computed: {
+    todos() {
+      return this.$state.store.todos
+    },
+  },
 }
 </script>
 
