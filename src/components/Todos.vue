@@ -18,7 +18,7 @@ export default {
   components: { TodoForm },
   computed: {
     todos() {
-      return this.$state.store.todos
+      return this.$store.state.todos
     },
   },
 }
