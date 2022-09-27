@@ -14,21 +14,17 @@
 </template>
 
 <script>
+import { mapGetters, mapMutations } from 'vuex'
+
 export default {
   name: 'Navbar',
-  computed: {
-    todos() {
-      return this.$store.state.todos
-    },
-    isAuthenticated() {
-      return this.$store.state.auth.isAuthenticated
-    },
-  },
-  methods: {
-    LoginOrLogout() {
-      this.$store.commit('TOGGLE_AUTH')
-    },
-  },
+  computed: mapGetters(['todos', 'isAuthenticated']),
+  // methods: {
+  //   LoginOrLogout() {
+  //     this.$store.commit('TOGGLE_AUTH')
+  //   },
+  // },
+  methods: mapMutations(['TOGGLE_AUTH']),
 }
 </script>
 

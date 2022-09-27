@@ -4,6 +4,7 @@
     <ul v-if="isAuthenticated">
       <li v-for="todo in todos" :key="todo.id" :class="todo.completed ? 'completed' : ''">
         {{ todo.title }}
+        <input type="checkbox" :checked="todo.completed" @change="MARK_COMPLETE(todo.id)" />
       </li>
     </ul>
   </div>
@@ -16,14 +17,8 @@ import TodoForm from './TodoForm'
 export default {
   name: 'Todos',
   components: { TodoForm },
-  computed: {
-    todos() {
-      return this.$store.state.todos
-    },
-    isAuthenticated() {
-      return this.$store.state.auth.isAuthenticated
-    },
-  },
+  computed: mapGetters(['todos', 'isAuthenticated']),
+  methods: mapMutations(['MARK_COMPLETE']),
 }
 </script>
 
@@ -54,6 +49,7 @@ export default {
 
 .todo-list li.completed {
   background: rgb(119, 218, 243);
+  text-decoration: line-through;
 }
 
 .todo-list li button {

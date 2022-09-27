@@ -15,7 +15,7 @@ const storeData = {
 
   state: {
     todos: [
-      { id: 1, title: 'Viec 1', completed: false },
+      { id: 1, title: 'Viec 1', completed: true },
       { id: 2, title: 'Viec 2', completed: false },
       { id: 3, title: 'Viec 3', completed: false },
     ],
@@ -23,13 +23,25 @@ const storeData = {
       isAuthenticated: false,
     },
   },
-  mutations:{
-    TOGGLE_AUTH:{
-      this.state.auth.isAuthenticated = !state.auth.isAuthenticated
-    }
-
-  }
-
+  getters: {
+    isAuthenticated: (state) => state.auth.isAuthenticated,
+    todos: (state) => state.todos,
+    doneTodos: (state, getters) => getters.todos.filter((todo) => todo.completed),
+    progress: (state, getters) => {
+      return Math.round((getters.doneTodos.length / getters.todos.length) * 100)
+    },
+  },
+  mutations: {
+    TOGGLE_AUTH(state) {
+      state.auth.isAuthenticated = !state.auth.isAuthenticated
+    },
+    MARK_COMPLETE(state, todoId) {
+      state.todos.map((todo) => {
+        if (todo.id === todoId) todo.completed = !todo.completed
+        return todo
+      })
+    },
+  },
 }
 
 const store = new Vuex.Store(storeData)
