@@ -23,6 +23,13 @@ const storeData = {
       isAuthenticated: false,
     },
   },
+  mutations:{
+    TOGGLE_AUTH:{
+      this.state.auth.isAuthenticated = !state.auth.isAuthenticated
+    }
+
+  }
+
 }
 
 const store = new Vuex.Store(storeData)
