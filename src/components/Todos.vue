@@ -19,7 +19,12 @@ export default {
   name: 'Todos',
   components: { TodoForm },
   computed: mapGetters(['todos', 'isAuthenticated']),
-  methods: { ...mapMutations(['MARK_COMPLETE']), deleteTodo() {} },
+  methods: {
+    ...mapMutations(['MARK_COMPLETE']),
+    deleteTodo(todoId) {
+      this.$state.actions.deleteTodo(todoId)
+    },
+  },
 }
 </script>
 
