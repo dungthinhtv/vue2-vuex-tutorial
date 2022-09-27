@@ -22,7 +22,7 @@ export default {
   methods: {
     ...mapMutations(['MARK_COMPLETE']),
     deleteTodo(todoId) {
-      this.$state.actions.deleteTodo(todoId)
+      this.$store.dispatch('deleteTodo', todoId)
     },
   },
 }

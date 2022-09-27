@@ -32,9 +32,9 @@ const storeData = {
     },
   },
   actions: {
-    deleteTodo(context, todoId) {
-      context.commit('DELETE_TODO', todoId)
-    },
+    // deleteTodo(context, todoId) {
+    //   context.commit('DELETE_TODO', todoId)
+    // },
     deleteTodo({ commit }, todoId) {
       commit('DELETE_TODO', todoId)
     },
@@ -50,10 +50,7 @@ const storeData = {
       })
     },
     DELETE_TODO(state, todoId) {
-      state.todos.filter((todo) => {
-        if (todo.id === todoId) todo.completed = !todo.completed
-        return todo
-      })
+      state.todos = state.todos.filter((todo) => todo.id != todoId)
     },
   },
 }
