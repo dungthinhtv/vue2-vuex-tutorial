@@ -28,7 +28,7 @@ const storeData = {
     todos: (state) => state.todos,
     doneTodos: (state, getters) => getters.todos.filter((todo) => todo.completed),
     progress: (state, getters) => {
-      return Math.round((getters.doneTodos.length / getters.todos.length) * 100)
+      return getters.todos.length > 0 ? Math.round((getters.doneTodos.length / getters.todos.length) * 100) : 100
     },
   },
   actions: {
