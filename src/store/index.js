@@ -38,7 +38,7 @@ const storeData = {
     deleteTodo({ commit }, todoId) {
       commit('DELETE_TODO', todoId)
     },
-    addTodo({ commit }, todo) {
+    addTodo({ commit }, newTodo) {
       commit('ADD_TODO', newTodo)
     },
   },

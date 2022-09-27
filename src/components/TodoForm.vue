@@ -26,6 +26,7 @@ export default {
         title: this.title,
         completed: false,
       })
+
       this.title = ''
     },
   },
