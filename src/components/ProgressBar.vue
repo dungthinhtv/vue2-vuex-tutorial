@@ -7,8 +7,8 @@ import { mapGetters, mapState } from 'vuex'
 
 export default {
   name: 'Progressbar',
-  // computed: mapGetters(['progress', 'isAuthenticated']),
-  computed: { ...mapGetters(['progress'], ...mapState(['auth'])) },
+  computed: mapGetters(['progress', 'isAuthenticated']),
+  // computed: { ...mapGetters(['progress'], ...mapState(['auth'])) },
 }
 </script>
 

@@ -31,12 +31,26 @@ const storeData = {
       return Math.round((getters.doneTodos.length / getters.todos.length) * 100)
     },
   },
+  actions: {
+    deleteTodo(context, todoId) {
+      context.commit('DELETE_TODO', todoId)
+    },
+    deleteTodo({ commit }, todoId) {
+      commit('DELETE_TODO', todoId)
+    },
+  },
   mutations: {
     TOGGLE_AUTH(state) {
       state.auth.isAuthenticated = !state.auth.isAuthenticated
     },
     MARK_COMPLETE(state, todoId) {
       state.todos.map((todo) => {
+        if (todo.id === todoId) todo.completed = !todo.completed
+        return todo
+      })
+    },
+    DELETE_TODO(state, todoId) {
+      state.todos.filter((todo) => {
         if (todo.id === todoId) todo.completed = !todo.completed
         return todo
       })

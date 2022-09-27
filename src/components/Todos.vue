@@ -5,6 +5,7 @@
       <li v-for="todo in todos" :key="todo.id" :class="todo.completed ? 'completed' : ''">
         {{ todo.title }}
         <input type="checkbox" :checked="todo.completed" @change="MARK_COMPLETE(todo.id)" />
+        <button>Delete</button>
       </li>
     </ul>
   </div>
