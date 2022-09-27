@@ -24,6 +24,11 @@ export default {
       return this.$store.state.auth.isAuthenticated
     },
   },
+  methods: {
+    LoginOrLogout() {
+      this.$store.commit('TOGGLE_AUTH')
+    },
+  },
 }
 </script>
 
