@@ -5,7 +5,7 @@
       <li v-for="todo in todos" :key="todo.id" :class="todo.completed ? 'completed' : ''">
         {{ todo.title }}
         <input type="checkbox" :checked="todo.completed" @change="MARK_COMPLETE(todo.id)" />
-        <button>Delete</button>
+        <button @click="deleteTodo(todo.id)">Delete</button>
       </li>
     </ul>
   </div>
@@ -19,7 +19,7 @@ export default {
   name: 'Todos',
   components: { TodoForm },
   computed: mapGetters(['todos', 'isAuthenticated']),
-  methods: mapMutations(['MARK_COMPLETE']),
+  methods: { ...mapMutations(['MARK_COMPLETE']), deleteTodo() {} },
 }
 </script>
 
