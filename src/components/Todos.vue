@@ -19,12 +19,15 @@ export default {
   name: 'Todos',
   components: { TodoForm },
   computed: mapGetters(['todos', 'isAuthenticated']),
+  created() {
+    this.getTodos()
+  },
   methods: {
     ...mapMutations(['MARK_COMPLETE']),
     // deleteTodo(todoId) {
     //   this.$store.dispatch('deleteTodo', todoId)
     // },
-    ...mapActions(['deleteTodo']),
+    ...mapActions(['deleteTodo', 'getTodos']),
   },
 }
 </script>

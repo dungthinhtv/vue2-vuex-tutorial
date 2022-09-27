@@ -15,9 +15,9 @@ const storeData = {
 
   state: {
     todos: [
-      { id: 1, title: 'Viec 1', completed: true },
-      { id: 2, title: 'Viec 2', completed: false },
-      { id: 3, title: 'Viec 3', completed: false },
+      // { id: 1, title: 'Viec 1', completed: true },
+      // { id: 2, title: 'Viec 2', completed: false },
+      // { id: 3, title: 'Viec 3', completed: false },
     ],
     auth: {
       isAuthenticated: false,
@@ -32,6 +32,15 @@ const storeData = {
     },
   },
   actions: {
+    async getTodos({ commit }) {
+      try {
+        const response = await axios.get('https://jsonplaceholder.typicode.com/todos?_limit=5')
+        commit('SET_TODOS', response.data)
+      } catch (error) {
+        console.log(error)
+      }
+    },
+
     // deleteTodo(context, todoId) {
     //   context.commit('DELETE_TODO', todoId)
     // },
@@ -57,6 +66,9 @@ const storeData = {
     },
     ADD_TODO(state, newTodo) {
       state.todos.unshift(newTodo)
+    },
+    SET_TODOS(state, todos) {
+      state.todos = todos
     },
   },
 }
