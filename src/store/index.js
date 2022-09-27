@@ -38,6 +38,9 @@ const storeData = {
     deleteTodo({ commit }, todoId) {
       commit('DELETE_TODO', todoId)
     },
+    addTodo({ commit }, todo) {
+      commit('ADD_TODO', newTodo)
+    },
   },
   mutations: {
     TOGGLE_AUTH(state) {
@@ -51,6 +54,9 @@ const storeData = {
     },
     DELETE_TODO(state, todoId) {
       state.todos = state.todos.filter((todo) => todo.id != todoId)
+    },
+    ADD_TODO(state, newTodo) {
+      state.todos.unshift(newTodo)
     },
   },
 }

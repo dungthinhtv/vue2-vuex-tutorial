@@ -21,9 +21,10 @@ export default {
   computed: mapGetters(['todos', 'isAuthenticated']),
   methods: {
     ...mapMutations(['MARK_COMPLETE']),
-    deleteTodo(todoId) {
-      this.$store.dispatch('deleteTodo', todoId)
-    },
+    // deleteTodo(todoId) {
+    //   this.$store.dispatch('deleteTodo', todoId)
+    // },
+    ...mapActions(['deleteTodo']),
   },
 }
 </script>

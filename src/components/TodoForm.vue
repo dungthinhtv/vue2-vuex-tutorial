@@ -21,12 +21,13 @@ export default {
     onSubmit(event) {
       event.preventDefault()
       // console.log(this.title)
+      // this.addTodo()
       this.addTodo({
         id: uuidv4(),
         title: this.title,
         completed: false,
       })
-      this.title = ''
+      // this.title = ''
     },
   },
 }
